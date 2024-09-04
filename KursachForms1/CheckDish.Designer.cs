@@ -1,4 +1,5 @@
-﻿namespace KursachForms1
+﻿
+namespace KursachForms1
 {
     partial class CheckDish
     {
@@ -28,175 +29,178 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            button1 = new Button();
-            comboBox1 = new ComboBox();
-            dataGridView1 = new DataGridView();
-            label1 = new Label();
-            button2 = new Button();
-            button3 = new Button();
-            textBox2 = new TextBox();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            mainTextBox = new TextBox();
+            deleteDataButton = new Button();
+            dishComboBox = new ComboBox();
+            dishDataGridView = new DataGridView();
+            markupLabel = new Label();
+            editDataButton = new Button();
+            resaveDataButton = new Button();
+            notesTextBox = new TextBox();
+            countButton = new Button();
+            sumButton = new Button();
+            avgButton = new Button();
+            saveToFileButton = new Button();
+            ((System.ComponentModel.ISupportInitialize)dishDataGridView).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // mainTextBox
             // 
-            textBox1.Location = new Point(2, 3);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(462, 621);
-            textBox1.TabIndex = 0;
-            textBox1.TextChanged += textBox1_TextChanged;
+            mainTextBox.Location = new Point(2, 3);
+            mainTextBox.Multiline = true;
+            mainTextBox.Name = "mainTextBox";
+            mainTextBox.Size = new Size(462, 621);
+            mainTextBox.TabIndex = 0;
+            mainTextBox.TextChanged += mainTextBox_TextChanged;
             // 
-            // button1
+            // deleteDataButton
             // 
-            button1.Location = new Point(631, 344);
-            button1.Name = "button1";
-            button1.Size = new Size(192, 29);
-            button1.TabIndex = 1;
-            button1.Text = "Удалить данные из бд";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            deleteDataButton.Location = new Point(631, 344);
+            deleteDataButton.Name = "deleteDataButton";
+            deleteDataButton.Size = new Size(192, 29);
+            deleteDataButton.TabIndex = 1;
+            deleteDataButton.Text = "Удалить данные из бд";
+            deleteDataButton.UseVisualStyleBackColor = true;
+            deleteDataButton.Click += deleteDataButton_Click;
             // 
-            // comboBox1
+            // dishComboBox
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(589, 301);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(274, 28);
-            comboBox1.TabIndex = 2;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            dishComboBox.FormattingEnabled = true;
+            dishComboBox.Location = new Point(589, 301);
+            dishComboBox.Name = "dishComboBox";
+            dishComboBox.Size = new Size(274, 28);
+            dishComboBox.TabIndex = 2;
+            dishComboBox.SelectedIndexChanged += dishComboBox_SelectedIndexChanged;
             // 
-            // dataGridView1
+            // dishDataGridView
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(563, 103);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(316, 192);
-            dataGridView1.TabIndex = 3;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dishDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dishDataGridView.Location = new Point(563, 103);
+            dishDataGridView.Name = "dishDataGridView";
+            dishDataGridView.RowHeadersWidth = 51;
+            dishDataGridView.Size = new Size(316, 192);
+            dishDataGridView.TabIndex = 3;
+            dishDataGridView.CellContentClick += dishDataGridView_CellContentClick;
             // 
-            // label1
+            // markupLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(684, 80);
-            label1.Name = "label1";
-            label1.Size = new Size(110, 20);
-            label1.TabIndex = 4;
-            label1.Text = "Наценка блюд";
+            markupLabel.AutoSize = true;
+            markupLabel.Location = new Point(684, 80);
+            markupLabel.Name = "markupLabel";
+            markupLabel.Size = new Size(110, 20);
+            markupLabel.TabIndex = 4;
+            markupLabel.Text = "Наценка блюд";
             // 
-            // button2
+            // editDataButton
             // 
-            button2.Location = new Point(621, 388);
-            button2.Name = "button2";
-            button2.Size = new Size(202, 29);
-            button2.TabIndex = 5;
-            button2.Text = "редактировать данные";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            editDataButton.Location = new Point(621, 388);
+            editDataButton.Name = "editDataButton";
+            editDataButton.Size = new Size(202, 29);
+            editDataButton.TabIndex = 5;
+            editDataButton.Text = "Редактировать данные";
+            editDataButton.UseVisualStyleBackColor = true;
+            editDataButton.Click += editDataButton_Click;
+            //
+
+
+            // resaveDataButton
             // 
-            // button3
+            resaveDataButton.Location = new Point(631, 38);
+            resaveDataButton.Name = "resaveDataButton";
+            resaveDataButton.Size = new Size(220, 29);
+            resaveDataButton.TabIndex = 6;
+            resaveDataButton.Text = "Пересохранить данные в бд";
+            resaveDataButton.UseVisualStyleBackColor = true;
+            resaveDataButton.Click += resaveDataButton_Click;
             // 
-            button3.Location = new Point(631, 38);
-            button3.Name = "button3";
-            button3.Size = new Size(220, 29);
-            button3.TabIndex = 6;
-            button3.Text = "Пересохранить данные в бд";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            // notesTextBox
             // 
-            // textBox2
+            notesTextBox.Location = new Point(491, 423);
+            notesTextBox.Multiline = true;
+            notesTextBox.Name = "notesTextBox";
+            notesTextBox.Size = new Size(462, 149);
+            notesTextBox.TabIndex = 7;
+            notesTextBox.TextChanged += notesTextBox_TextChanged;
             // 
-            textBox2.Location = new Point(491, 423);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(462, 149);
-            textBox2.TabIndex = 7;
-            textBox2.TextChanged += textBox2_TextChanged;
+            // countButton
             // 
-            // button4
+            countButton.Location = new Point(510, 595);
+            countButton.Name = "countButton";
+            countButton.Size = new Size(94, 29);
+            countButton.TabIndex = 8;
+            countButton.Text = "Count";
+            countButton.UseVisualStyleBackColor = true;
+            countButton.Click += countButton_Click;
             // 
-            button4.Location = new Point(510, 595);
-            button4.Name = "button4";
-            button4.Size = new Size(94, 29);
-            button4.TabIndex = 8;
-            button4.Text = "Count";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            // sumButton
             // 
-            // button5
+            sumButton.Location = new Point(684, 595);
+            sumButton.Name = "sumButton";
+            sumButton.Size = new Size(94, 29);
+            sumButton.TabIndex = 9;
+            sumButton.Text = "Sum";
+            sumButton.UseVisualStyleBackColor = true;
+            sumButton.Click += sumButton_Click;
             // 
-            button5.Location = new Point(684, 595);
-            button5.Name = "button5";
-            button5.Size = new Size(94, 29);
-            button5.TabIndex = 9;
-            button5.Text = "Sum";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+            // avgButton
             // 
-            // button6
+            avgButton.Location = new Point(859, 595);
+            avgButton.Name = "avgButton";
+            avgButton.Size = new Size(94, 29);
+            avgButton.TabIndex = 10;
+            avgButton.Text = "Avg";
+            avgButton.UseVisualStyleBackColor = true;
+            avgButton.Click += avgButton_Click;
             // 
-            button6.Location = new Point(859, 595);
-            button6.Name = "button6";
-            button6.Size = new Size(94, 29);
-            button6.TabIndex = 10;
-            button6.Text = "Avg";
-            button6.UseVisualStyleBackColor = true;
-            button6.Click += button6_Click;
+            // saveToFileButton
             // 
-            // button7
-            // 
-            button7.Location = new Point(904, 276);
-            button7.Name = "button7";
-            button7.Size = new Size(94, 53);
-            button7.TabIndex = 11;
-            button7.Text = "Данные в файл";
-            button7.UseVisualStyleBackColor = true;
-            button7.Click += button7_Click;
+            saveToFileButton.Location = new Point(904, 276);
+            saveToFileButton.Name = "saveToFileButton";
+            saveToFileButton.Size = new Size(94, 53);
+            saveToFileButton.TabIndex = 11;
+            saveToFileButton.Text = "Данные в файл";
+            saveToFileButton.UseVisualStyleBackColor = true;
+            saveToFileButton.Click += saveToFileButton_Click;
             // 
             // CheckDish
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1007, 636);
-            Controls.Add(button7);
-            Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(textBox2);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(label1);
-            Controls.Add(dataGridView1);
-            Controls.Add(comboBox1);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(saveToFileButton);
+            Controls.Add(avgButton);
+            Controls.Add(sumButton);
+            Controls.Add(countButton);
+            Controls.Add(notesTextBox);
+            Controls.Add(resaveDataButton);
+            Controls.Add(editDataButton);
+            Controls.Add(markupLabel);
+            Controls.Add(dishDataGridView);
+            Controls.Add(dishComboBox);
+            Controls.Add(deleteDataButton);
+            Controls.Add(mainTextBox);
             Name = "CheckDish";
             Text = "CheckDish";
             Load += CheckDish_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dishDataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
+
         #endregion
 
-        private TextBox textBox1;
-        private Button button1;
-        private ComboBox comboBox1;
-        private DataGridView dataGridView1;
-        private Label label1;
-        private Button button2;
-        private Button button3;
-        private TextBox textBox2;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private Button button7;
-    }
+        private TextBox mainTextBox;
+        private Button deleteDataButton;
+        private ComboBox dishComboBox;
+        private DataGridView dishDataGridView;
+        private Label markupLabel;
+        private Button editDataButton;
+        private Button resaveDataButton;
+        private TextBox notesTextBox;
+        private Button countButton;
+        private Button sumButton;
+        private Button avgButton;
+        private Button saveToFileButton;
+    } 
 }

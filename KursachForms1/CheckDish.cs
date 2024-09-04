@@ -1,59 +1,62 @@
-﻿using Kursovaya1;
+﻿
+
+using Kursovaya1;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace KursachForms1
 {
     public partial class CheckDish : Form
     {
         private readonly Contekst _dbContext;
-        private Dish _selectedDish; // Добавляем поле для хранения выбранного блюда
+        private Dish _selectedDish;
+
         public CheckDish()
         {
             InitializeComponent();
             _dbContext = new Contekst();
         }
+
         private void CheckDish_Load(object sender, EventArgs e)
         {
             var dishes = _dbContext.dishes.ToList();
             var markUps = _dbContext.mark_Up_Of_The_Dishes.ToList();
 
             // Очистка текстового поля перед добавлением новой информации
-            textBox1.Clear();
-            textBox1.Text += "Блюда \r\n";
+            mainTextBox.Clear();
+            mainTextBox.Text += "Блюда \r\n";
 
             // Заполнение ComboBox и текстового поля информацией о каждом блюде
-            comboBox1.Items.Clear();
+            dishComboBox.Items.Clear();
             foreach (var dish in dishes)
             {
-                comboBox1.Items.Add(new ComboBoxItem(dish.Id, dish.named));
-                textBox1.Text += $"\r\nНазвание: {dish.named}, Цена: {dish.price}, Себестоимость: {dish.Cost_price}\r\n";
+                dishComboBox.Items.Add(new ComboBoxItem(dish.Id, dish.named));
+                mainTextBox.Text += $"\r\nНазвание: {dish.named}, Цена: {dish.price}, Себестоимость: {dish.Cost_price}\r\n";
             }
 
             // Заполнение DataGridView информацией о наценках
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
-            dataGridView1.Columns.Add("DishName", "Название блюда");
-            dataGridView1.Columns.Add("ExtraCharge", "Наценка");
+            dishDataGridView.Rows.Clear();
+            dishDataGridView.Columns.Clear();
+            dishDataGridView.Columns.Add("DishName", "Название блюда");
+            dishDataGridView.Columns.Add("ExtraCharge", "Наценка");
             for (int i = 0; i < Math.Min(dishes.Count, markUps.Count); i++)
             {
                 var dish = dishes[i];
                 var markUp = markUps[i];
-                dataGridView1.Rows.Add(dish.named, markUp.extra_charge);
+                dishDataGridView.Rows.Add(dish.named, markUp.extra_charge);
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void deleteDataButton_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem is ComboBoxItem selectedDish)
+            if (dishComboBox.SelectedItem is ComboBoxItem selectedDish)
             {
                 var dishToRemove = _dbContext.dishes.Find(selectedDish.Id);
                 if (dishToRemove != null)
@@ -69,7 +72,7 @@ namespace KursachForms1
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void dishComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Здесь можно добавить дополнительную логику при выборе элемента в ComboBox
         }
@@ -91,33 +94,33 @@ namespace KursachForms1
                 return Name;
             }
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
+
+        private void mainTextBox_TextChanged(object sender, EventArgs e)
         {
             // Здесь можно добавить код, который будет выполняться при изменении текста.
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dishDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Здесь можно добавить код, который будет выполняться при клике на ячейку DataGridView.
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void editDataButton_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem is ComboBoxItem selectedDishItem)
+            if (dishComboBox.SelectedItem is ComboBoxItem selectedDishItem)
             {
                 _selectedDish = _dbContext.dishes.Find(selectedDishItem.Id);
                 if (_selectedDish != null)
                 {
-                    textBox1.Text = _selectedDish.named; // Загружаем название блюда в textBox1 для редактирования
+                    mainTextBox.Text = _selectedDish.named; // Загружаем название блюда в mainTextBox для редактирования
                 }
             }
         }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void resaveDataButton_Click(object sender, EventArgs e)
         {
             if (_selectedDish != null)
             {
-                _selectedDish.named = textBox1.Text; // Обновляем название блюда
+                _selectedDish.named = mainTextBox.Text; // Обновляем название блюда
                 _dbContext.SaveChanges(); // Сохраняем изменения в базе данных
 
                 MessageBox.Show("Блюдо успешно обновлено.");
@@ -127,39 +130,39 @@ namespace KursachForms1
             }
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void notesTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            // Здесь можно добавить код, который будет выполняться при изменении текста в notesTextBox.
         }
 
-        private void button4_Click(object sender, EventArgs e) //Count
+        private void countButton_Click(object sender, EventArgs e) //Count
         {
             // Подсчет количества блюд в базе данных
             int dishCount = _dbContext.dishes.Count();
 
-            // Вывод результата в textBox2
-            textBox2.Text = $"Количество блюд: {dishCount}";
+            // Вывод результата в notesTextBox
+            notesTextBox.Text = $"Количество блюд: {dishCount}";
         }
 
-        private void button5_Click(object sender, EventArgs e) //Sum
+        private void sumButton_Click(object sender, EventArgs e) //Sum
         {
             // Подсчет суммы цен всех блюд в базе данных
             double totalCost = _dbContext.dishes.Sum(d => d.price);
 
-            // Вывод результата в textBox2
-            textBox2.Text = $"Общая стоимость всех блюд: {totalCost}";
+            // Вывод результата в notesTextBox
+            notesTextBox.Text = $"Общая стоимость всех блюд: {totalCost}";
         }
 
-        private void button6_Click(object sender, EventArgs e) //Avg
+        private void avgButton_Click(object sender, EventArgs e) //Avg
         {
             // Подсчет средней цены блюд в базе данных
             double averageCost = _dbContext.dishes.Average(d => d.price);
 
-            // Вывод результата в textBox2
-            textBox2.Text = $"Средняя стоимость блюда: {averageCost}";
+            // Вывод результата в notesTextBox
+            notesTextBox.Text = $"Средняя стоимость блюда: {averageCost}";
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void saveToFileButton_Click(object sender, EventArgs e)
         {
             // Здесь вы можете определить условие для выбора данных
             var dishesToExport = _dbContext.dishes.Where(d => d.price > 100); // Пример условия
